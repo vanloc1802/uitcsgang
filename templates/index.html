@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0" />
+  <title>UITCSGANG</title>
+  <link rel="shortcut icon" href="{{url_for('static',filename='img/favicon.ico')}}" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/static/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="bg">
+    <div id="bg-overlay"></div>
+    <div class="wrap">
+      <img class="logo" src="/static/img/logo_full.png" />
+      <form class="form_search" name="form_search" action="/search" method="POST">
+        <div id="search_bar" class="searchbar" style="margin-top: 30px;">
+          {% if value %}
+          <input id="query" class="search_input" type="text" name="query" placeholder="Search..." autofocus
+            onfocus="focus_input()" onblur="onblur_input()">
+          <script type="text/javascript">
+            document.getElementById('query').value = '{{ value }}';
+          </script>
+          {% else %}
+          <input id="query" class="search_input" type="text" name="query" placeholder="Search..." autofocus
+            onfocus="focus_input()" onblur="onblur_input()">
+          {% endif %}
+          <a href="javascript: submitform()" class="search_icon">
+            <i class="fas fa-search"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="/static/js/main.js"></script>\
+</body>
+
+</html>
