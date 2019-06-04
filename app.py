@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory, redirect, url_for
+from flask import Flask, render_template, request, send_from_directory, redirect, url_for, send_file
 import os
 from searching import searchEngine
 
@@ -10,6 +10,9 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+@app.route("/.well-known/pki-validation/<filename>")
+def send_ssl(filename):
+    return send_file(filename)
 
 @app.route("/")
 def index():
@@ -38,4 +41,4 @@ def search():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
